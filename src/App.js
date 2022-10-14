@@ -5,7 +5,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 //importing all the info from the class content
-import {Content} from './components/content'
+import { Content } from './components/content'
 //importing all the info from the class Header
 import { Header } from './components/header';
 //importing all the info from the class Footer
@@ -16,42 +16,46 @@ import Navbar from 'react-bootstrap/NavBar'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav'
 
-import {BrowserRouter as Router,
-        Routes,
-        Route
-      } from 'react-router-dom';
+import { Read } from './components/read';
+import { Create } from './components/create';
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom';
 
 //changed from fucntion to class
 class App extends React.Component {
   //must included this method called render
-  render(){
-  return (
-    <Router>
-    <div className="App">
+  render() {
+    return (
+      <Router>
+        <div className="App">
 
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/read">Read</Nav.Link>
-            <Nav.Link href="/create">Create</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-      <Routes>
-        <Route path='/' element ={<Content></Content>}></Route>
-        <Route path ='/read' element ={<Header></Header>}></Route>
-        <Route path = '/create' element ={<Footer></Footer>}></Route>
-      </Routes>
+          <Navbar bg="dark" variant="dark">
+            <Container>
+              <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+              <Nav className="me-auto">
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/read">Read</Nav.Link>
+                <Nav.Link href="/create">Create</Nav.Link>
+              </Nav>
+            </Container>
+          </Navbar>
+          <Routes>
+            <Route path='/' element={<Content></Content>}></Route>
+            <Route path='/read' element={<Read></Read>}></Route>
+            <Route path='/create' element={<Create></Create>}></Route>
+          </Routes>
 
-      {/* <Header></Header>
+          {/* <Header></Header>
       <Content></Content>
       <Footer></Footer> 
       do ctrl + k + c to comment*/}
-    </div>
-    </Router>
-  );
+        </div>
+      </Router>
+    );
   }
 }
 export default App;
