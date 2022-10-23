@@ -1,48 +1,35 @@
 import React from "react";
+//Import Axios
+import axios from "axios";
 
-//import books
-import {Books} from "./books";
+//Import Books
+import { Books } from "./books";
 
+//NOW USING API INSTEAD 
 export class Read extends React.Component {
+    componentDidMount() {
+        //HTTP Request
+        axios.get('https://jsonblob.com/api/jsonblob/1027219693823606784')
+            //When Request Completed
+            .then(
+                //Function
+                (response) => {
+                    // Updating the State
+                    this.setState({ books: response.data })
+                }
+            )
+            //If Request returns error
+            .catch(
+                (error) => {
+                    console.log(error)
+                }
+            );
+    }
 
-    //will hold all data for class
+    //Object that will hold all data for class
     state = {
-        //array
-        books: [
-            {
-                "title": "Learn Git in a Month of Lunches",
-                "isbn": "1617292419",
-                "pageCount": 0,
-                "thumbnailUrl": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/umali.jpg",
-                "status": "MEAP",
-                "authors": ["Rick Umali"],
-                "categories": []
-            },
-            {
-                "title": "MongoDB in Action, Second Edition",
-                "isbn": "1617291609",
-                "pageCount": 0,
-                "thumbnailUrl": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/banker2.jpg", "status": "MEAP",
-                "authors": [
-                    "Kyle Banker",
-                    "Peter Bakkum",
-                    "Tim Hawkins",
-                    "Shaun Verch",
-                    "Douglas Garrett"
-                ],
-                "categories": []
-            },
-            {
-                "title": "Getting MEAN with Mongo, Express, Angular, and Node",
-                "isbn": "1617292036",
-                "pageCount": 0,
-                "thumbnailUrl":"https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/sholmes.jpg", "status": "MEAP",
-                "authors": ["Simon Holmes"],
-                "categories": []
-            }
-        ]
-
-
+        //Assigning Data to The Array
+        books: []
     }
 
     //must rertun jss code
