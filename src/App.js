@@ -18,6 +18,7 @@ import Nav from 'react-bootstrap/Nav'
 
 import { Read } from './components/read';
 import { Create } from './components/create';
+import { Edit } from './components/edit';
 
 import {
   BrowserRouter as Router,
@@ -47,6 +48,7 @@ class App extends React.Component {
             <Route path='/' element={<Content></Content>}></Route>
             <Route path='/read' element={<Read></Read>}></Route>
             <Route path='/create' element={<Create></Create>}></Route>
+            <Route path='/edit' element={<Edit></Edit>}></Route>
           </Routes>
 
           {/* <Header></Header>

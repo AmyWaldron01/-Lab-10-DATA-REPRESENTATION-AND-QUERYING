@@ -25,31 +25,37 @@ app.use(function (req, res, next) {
     next();
 });
 
-// getting-started.js
+// Mongoose Connecting yo my data base
 const mongoose = require('mongoose');
 
+//Making the connectiuon with the database
 main().catch(err => console.log(err));
 
 async function main() {
     //Connecting to  mongodb database i created
-    await mongoose.connect('mongodb+srv://123:123@cluster0.rhqvnnf.mongodb.net/?retryWrites=true&w=majority');
+    await mongoose.connect('mongodb+srv://123:<123>@cluster0.rhqvnnf.mongodb.net/?retryWrites=true&w=majority');
+    // Username :123 pass:123
 }
 
 //Format which all the data will be in
+//Converting to string
 const bookSchema = new mongoose.Schema({
     title: String,
     author: String,
     cover: String
 });
 
+//model to interact with databse
 const bookModel = mongoose.model('AllBooks', bookSchema);
 
 //Use nodemon to avoid needing to stop node server to update changes
 
 //using all api generated code
+//putting the data into embeedded body
 app.post('/api/books', (req, res) => {
     console.log(req.body);
 
+    //writing the data to the page
     bookModel.create({
         title: req.body.title,
         cover: req.body.cover,
@@ -58,12 +64,17 @@ app.post('/api/books', (req, res) => {
     res.send('Data Recieved');
 })
 
+//HTTP is handled by req & res
 app.get('/api/books', (req, res) => {
+
+    //To interact to database
     bookModel.find((error, data) => {
         res.json(data);
     })
 })
 
+//Passinf the ID to URL
+// ' : ' is to say it is a variable
 app.get('/api/book/:id', (req, res) => {
     console.log(req.params.id);
 
