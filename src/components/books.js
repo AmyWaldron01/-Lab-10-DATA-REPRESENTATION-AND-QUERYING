@@ -18,7 +18,7 @@ export class Books extends React.Component {
         return this.props.books.map(
            //excuting this on each element
             (book)=>{
-                return <BookItems book = {book} key={book.isbn}></BookItems>
+                return <BookItems book = {book} key={book.isbn} Reload = {this.props.Reload}></BookItems>
             }
         );
     }

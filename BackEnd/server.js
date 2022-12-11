@@ -2,11 +2,15 @@
 //npm install express
 //npm install cors
 
+//npm install body-parser
+//npm install express
+//npm install cors
+
 //Importing Express
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const port = 3000 //Port
+const port = 300 //Port
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -82,6 +86,24 @@ app.get('/api/book/:id', (req, res) => {
         res.json(data);
     })
 })
+
+// app.put('/api/book/:id',(req,res) =>{
+//     console.log("Update: " + req.params.id);
+
+//     bookModel.findByIdAndUpdate(req.params.id, req.body, {new:true},
+//         (error,data)=>{
+//             res.send(data);
+//         })
+// })
+
+// app.delete('/api/book/:id', (req,res) => {
+//     console.log('Deleting: ' + req.params.id); 
+
+//     bookModel.findByIdAndDelete({_id:req.params.id}, (error,data)=>{ 
+//         res.send(data);
+//     }) 
+
+// })
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

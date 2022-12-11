@@ -7,6 +7,18 @@ import { Books } from "./books";
 
 //NOW USING API INSTEAD 
 export class Read extends React.Component {
+    constructor() {
+        super();
+        this.Reload = this.Reload.bind(this);
+    }
+
+    Reload() {
+        this.componentDidMount();
+    }
+
+
+
+
     componentDidMount() {
         //HTTP Request
         axios.get('https://jsonblob.com/api/jsonblob/1027219693823606784')
@@ -37,7 +49,8 @@ export class Read extends React.Component {
         return (
             <div>
                 <h3>Hello from my Read component!</h3>
-                <Books books={this.state.books}></Books>
+                {/*Displaying the new data for reload*/}
+                <Books books={this.state.books} Reload={this.Reload} ></Books>
             </div>
         );
     }
