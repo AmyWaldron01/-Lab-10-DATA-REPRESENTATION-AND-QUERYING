@@ -21,6 +21,7 @@ export class BookItems extends React.Component {
     //Calls the delete with the books id
     DeleteBook(e) {
         e.preventDefault();
+        // now returns the react single page application
         axios.delete('http://localhost:4000/api/book/' + this.props.book.isbn)
             .then((res) => { this.props.Reload(); })
             .catch();
